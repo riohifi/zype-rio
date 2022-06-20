@@ -1,0 +1,6 @@
+module Pods_Zype_ZypeTests {
+  umbrella header "Pods-Zype-ZypeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

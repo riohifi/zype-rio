@@ -1,0 +1,87 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.zype.app"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="31" />
+10
+11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+11-->/Users/rio/Desktop/ZYPE/zype/android/app/src/debug/AndroidManifest.xml:5:5-77
+11-->/Users/rio/Desktop/ZYPE/zype/android/app/src/debug/AndroidManifest.xml:5:22-75
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:4:5-67
+12-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:4:22-64
+13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+13-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:5:5-79
+13-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:5:22-76
+14    <uses-permission android:name="android.permission.READ_CONTACTS" />
+14-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:6:5-72
+14-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:6:22-69
+15    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+15-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:7:5-73
+15-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:7:22-70
+16    <uses-permission android:name="android.permission.READ_PROFILE" />
+16-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:8:5-71
+16-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:8:22-68
+17    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+17-->[com.facebook.flipper:flipper:0.125.0] /Users/rio/.gradle/caches/transforms-3/b2ec3232205e095c09543a31d56ae642/transformed/jetified-flipper-0.125.0/AndroidManifest.xml:16:5-76
+17-->[com.facebook.flipper:flipper:0.125.0] /Users/rio/.gradle/caches/transforms-3/b2ec3232205e095c09543a31d56ae642/transformed/jetified-flipper-0.125.0/AndroidManifest.xml:16:22-73
+18
+19    <application
+19-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:10:5-30:19
+20        android:name="com.zype.app.MainApplication"
+20-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:11:7-38
+21        android:allowBackup="false"
+21-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:15:7-34
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.6.0] /Users/rio/.gradle/caches/transforms-3/5c61d7afbc1bcd99cb491da6ba2ee6c1/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+23        android:debuggable="true"
+24        android:icon="@mipmap/ic_launcher"
+24-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:13:7-41
+25        android:label="@string/app_name"
+25-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:12:7-39
+26        android:roundIcon="@mipmap/ic_launcher_round"
+26-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:14:7-52
+27        android:theme="@style/AppTheme"
+27-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:16:7-38
+28        android:usesCleartextTraffic="true" >
+28-->/Users/rio/Desktop/ZYPE/zype/android/app/src/debug/AndroidManifest.xml:8:9-44
+29        <activity
+29-->/Users/rio/Desktop/ZYPE/zype/android/app/src/debug/AndroidManifest.xml:11:9-111
+30            android:name="com.facebook.react.devsupport.DevSettingsActivity"
+30-->/Users/rio/Desktop/ZYPE/zype/android/app/src/debug/AndroidManifest.xml:11:19-83
+31            android:exported="false" />
+31-->/Users/rio/Desktop/ZYPE/zype/android/app/src/debug/AndroidManifest.xml:11:84-108
+32        <activity
+32-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:17:7-29:18
+33            android:name="com.zype.app.MainActivity"
+33-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:18:9-37
+34            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+34-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:21:9-118
+35            android:exported="true"
+35-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:24:9-32
+36            android:label="@string/app_name"
+36-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:19:9-41
+37            android:launchMode="singleTask"
+37-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:22:9-40
+38            android:screenOrientation="portrait"
+38-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:20:9-45
+39            android:windowSoftInputMode="adjustResize" >
+39-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:23:9-51
+40            <intent-filter>
+40-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:25:9-28:25
+41                <action android:name="android.intent.action.MAIN" />
+41-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:26:13-65
+41-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:26:21-62
+42
+43                <category android:name="android.intent.category.LAUNCHER" />
+43-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:27:13-73
+43-->/Users/rio/Desktop/ZYPE/zype/android/app/src/main/AndroidManifest.xml:27:23-70
+44            </intent-filter>
+45        </activity>
+46    </application>
+47
+48</manifest>

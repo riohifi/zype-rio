@@ -1,0 +1,142 @@
+[
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-mdpi_src_utils_assets_images_icici.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-mdpi/src_utils_assets_images_icici.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-mdpi_src_utils_assets_images_ex_logo.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-mdpi/src_utils_assets_images_ex_logo.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-xhdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-xhdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-mdpi_src_utils_assets_images_gradient_bg.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-mdpi/src_utils_assets_images_gradient_bg.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-mdpi_src_utils_assets_images_car.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-mdpi/src_utils_assets_images_car.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-mdpi_src_utils_assets_images_color_bd_1.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-mdpi/src_utils_assets_images_color_bd_1.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable_launch_screen.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/src/main/res/drawable/launch_screen.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-xxxhdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-xxxhdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-hdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-hdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-mdpi_src_utils_assets_images_color_bd_2.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-mdpi/src_utils_assets_images_color_bd_2.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/layout_launch_screen.xml.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/src/main/res/layout/launch_screen.xml"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-mdpi_src_utils_assets_images_logo.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-mdpi/src_utils_assets_images_logo.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-xxhdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-xxhdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-mdpi_src_utils_assets_images_axis.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-mdpi/src_utils_assets_images_axis.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-mdpi_src_utils_assets_images_hdfc.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-mdpi/src_utils_assets_images_hdfc.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-mdpi_src_utils_assets_images_light.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-mdpi/src_utils_assets_images_light.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable_rn_edit_text_material.xml.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/src/main/res/drawable/rn_edit_text_material.xml"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-mdpi_src_utils_assets_images_won.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-mdpi/src_utils_assets_images_won.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-mdpi_src_utils_assets_images_story.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-mdpi/src_utils_assets_images_story.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-mdpi_node_modules_reactnavigation_elements_src_assets_backiconmask.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-mdpi/node_modules_reactnavigation_elements_src_assets_backiconmask.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-mdpi_src_utils_assets_images_bg_1.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-mdpi/src_utils_assets_images_bg_1.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-mdpi_src_utils_assets_images_bell.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-mdpi/src_utils_assets_images_bell.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-mdpi_src_utils_assets_images_delete_icon.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-mdpi/src_utils_assets_images_delete_icon.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-mdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-mdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/drawable-mdpi_src_utils_assets_images_circle.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/build/generated/res/react/release/drawable-mdpi/src_utils_assets_images_circle.png"
+    },
+    {
+        "merged": "/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/merged_res/release/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/Users/rio/Desktop/ZYPE/zype/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    }
+]
