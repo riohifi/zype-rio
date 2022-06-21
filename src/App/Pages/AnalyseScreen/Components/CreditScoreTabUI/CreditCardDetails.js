@@ -50,7 +50,7 @@ const CreditCardDetails = ({ handleUISelect, Styles }) => {
                         </View>
                         <TouchableOpacity style={{  }}>
                             <Text style={[Styles.row_1_row_btn_text_3, {color: Colors.black}]}>sanctioned amount</Text>
-                            <Text style={[Styles.row_1_row_btn_text_2, {color: Colors.black, fontSize: wp('4.5%'), marginVertical: wp('2%'), fontFamily: Fonts.medium}]}>{Config.currency} {data?.loan_amount}</Text>
+                            <Text style={[Styles.row_1_row_btn_text_2, {color: Colors.black, fontSize: wp('4.5%'), marginVertical: wp('2%'), fontFamily: Fonts.medium}]}>{Config.currency} {data?.loan_type !== 'Credit Card' ? data?.loan_amount : data?.credit_limit}</Text>
                         </TouchableOpacity>
                     </View>
                     {/* *********** Row 3 End ******* */}
@@ -72,7 +72,7 @@ const CreditCardDetails = ({ handleUISelect, Styles }) => {
                             <Text style={[Styles.row_1_row_btn_text_2, {color: Colors.black, fontSize: wp('4%'),}]}>payment history</Text>
                         </View>
                         <TouchableOpacity style={{  }}>
-                            <Text style={[Styles.row_1_row_btn_text_2, {color: Colors.green20, fontSize: wp('4%'),}]}>{allCreditData?.total_credit_limit_available} ON TIME</Text>
+                            <Text style={[Styles.row_1_row_btn_text_2, {color: Colors.green20, fontSize: wp('4%'),}]}>{data?.full_payment/data?.total_payment*100}% ON TIME</Text>
                         </TouchableOpacity>
                     </View>
                     {/* *********** Row 3 End ******* */}
