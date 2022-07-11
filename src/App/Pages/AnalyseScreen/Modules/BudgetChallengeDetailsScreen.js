@@ -13,7 +13,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import { BarChart, PieChart } from "react-native-chart-kit";
 import Config from '../../../../Utils/Config';
-import { numberWithCommas } from '../../../../Utils/Utils';
+import { numberWithCommas, round } from '../../../../Utils/Utils';
 import { observer } from 'mobx-react-lite';
 import BarChartComponent from '../Components/BarChartComponent';
 import AnalyseStore from '../../../../Stores/AnalyseStore';
@@ -156,8 +156,8 @@ const calculateNetWorth = ()=>{
                     <View style={Styles.section}>
                         <View style={Styles.row_6}>
                             <View style={[Styles.row_6_col, { flex: 2 }]}>
-                                <Text style={[Styles.row_6_col_text_2,]}>Total spent on eating out</Text>
-                                <Text style={[Styles.row_6_col_text]}>{Config.currency}{numberWithCommas(spendAmount)}  <Text style={[Styles.row_6_col_text_2, { color: Math.round((spendAmount - lastMonthAmount)/lastMonthAmount*100) > 0 ? Colors.orange : Colors.success, flexDirection: 'row', alignItems: 'center' }]}> <MaterialCommunityIcons name="trending-up" />  {Math.round((spendAmount - lastMonthAmount)/lastMonthAmount*100)}%</Text></Text>
+                                <Text style={[Styles.row_6_col_text_2,]}>Total spent on {data?.category}</Text>
+                                <Text style={[Styles.row_6_col_text]}>{Config.currency}{numberWithCommas(spendAmount)}  <Text style={[Styles.row_6_col_text_2, { color: Math.round((spendAmount - lastMonthAmount)/lastMonthAmount*100) > 0 ? Colors.orange : Colors.success, flexDirection: 'row', alignItems: 'center' }]}> <MaterialCommunityIcons name="trending-up" />  {round(Math.round((spendAmount - lastMonthAmount)/lastMonthAmount*100), 2)}%</Text></Text>
 
                             </View>
                             {/* <View style={Styles.row_6_col_2}>

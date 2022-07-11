@@ -1,4 +1,4 @@
-#Mon Jun 20 23:59:56 IST 2022
+#Mon Jul 11 19:40:35 IST 2022
 base.1=/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/dex/release/mergeDexRelease/classes2.dex
 path.1=classes2.dex
 base.0=/Users/rio/Desktop/ZYPE/zype/android/app/build/intermediates/dex/release/mergeDexRelease/classes.dex

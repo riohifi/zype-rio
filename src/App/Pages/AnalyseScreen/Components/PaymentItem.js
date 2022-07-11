@@ -16,7 +16,7 @@ const PaymentItem = ({ item, navigate, index}) => {
                         <Image source={{uri: item.icon_image}} style={Styles.icon_box_sm} resizeMode='contain' />
                         <View style={{marginHorizontal: wp('3%')}}>
                             <Text style={Styles.row_8_text_2}>{item.title}</Text>
-                            <Text style={Styles.row_8_text_3}>Next <Text style={{color: Colors.cyan}}> {item.date}</Text></Text>
+                            <Text style={Styles.row_8_text_3}>Next <Text style={{color: Colors.cyan}}> {item.next_bill_date}</Text></Text>
                         </View>
                     </View>
                     <View>

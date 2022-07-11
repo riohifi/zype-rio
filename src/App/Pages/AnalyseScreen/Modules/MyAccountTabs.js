@@ -28,7 +28,7 @@ import BarChartComponent from '../Components/BarChartComponent'
 import { observer } from 'mobx-react-lite';
 import AnalyseStore from '../../../../Stores/AnalyseStore';
 import { Grid, LineChart, XAxis, YAxis } from 'react-native-svg-charts'
-import { getBankIcon, numberWithCommas, getPaymentIcon , getLastDigit, random_rgba, pickColor} from '../../../../Utils/Utils';
+import { getBankIcon, numberWithCommas, getPaymentIcon , getLastDigit, random_rgba, pickColor, round} from '../../../../Utils/Utils';
 import moment from 'moment';
 import Config from '../../../../Utils/Config';
 import Carousel from 'react-native-snap-carousel';
@@ -49,16 +49,13 @@ const MyAccountTabs = () => {
     const [viewRef, setViewRef] = useState(null);
     const monthRef = useRef(null);
 
-    const [dates, setDates] = useState(["June ‘22 ", "July ‘22 "])
+    const [dates, setDates] = useState([])
     const [months, setMonths] = useState([])
 
     const [isRow2Opened, setIsRow2Opened] = useState(false)
     const handleIsRow2Opened = ()=>{setIsRow2Opened(!isRow2Opened)}
 
-    const [bankList, setBankList] = useState([
-        {bankName: "--", amount: "--", tag: "AA", date: "15th July 2022", icon: Images.hdfc, color: Colors.cyan},
-        {bankName: "--", amount: "--", tag: "AA", date: "15th July 2022", icon: Images.icici, color: Colors.orange},
-    ])
+    const [bankList, setBankList] = useState([])
     const renderItem = ({ item }) => ( <BankItem item={item} /> );
 
     const [activeCat, setActiveCat] = useState(0)
@@ -88,10 +85,7 @@ const MyAccountTabs = () => {
     }
     const renderCatItem = ({ item, index }) => ( CategorySectionUi(index, activeCat, item) );
 
-    const [suggestList, setSuggestList] = useState([
-        {title: " ", desc: 'You seemed to have spent 20% more on dining than last month', tag: "#Zypeinsights", icon: Images.color_bd_1, color: [Colors.cyan, Colors.cyan20, Colors.cyan30]},
-        {title: "Taj Hotels", desc: 'You seemed to have spent 20% more on dining than last month ', tag: "Taj Hotels", icon: Images.color_bd_2, color: [Colors.orange, Colors.orange20, Colors.orange10]},
-    ])
+    const [suggestList, setSuggestList] = useState([])
     const renderSuggestItem = ({ item }) => ( <SuggestItem item={item} /> );
 
     const [pieData, setPieData] = useState([]);
@@ -115,20 +109,13 @@ const MyAccountTabs = () => {
     const renderJointItem = ({ item, index }) => ( <JoinListItem item={item} isIAmIn={true} index={index}  /> );
 
     const [challengeList, setChallengeList] = useState([
-        {circle: true, title: "Limit fashion shopping", color: ['rgba(32, 165, 165, 0.032824)', 'rgba(32, 165, 165, 0.032824)', 'rgba(32, 165, 165, 0.092824)'], buttonText: '🙌 GOING GOOD'},
-        {circle: false, title: "No drink november", color: ['rgba(32, 165, 165, 0.032824)', 'rgba(32, 165, 165, 0.032824)', 'rgba(32, 165, 165, 0.092824)'], buttonText: '🤙 COMPLETED'},
-    ])
+     ])
     const renderChallengeItem = ({ item, index }) => ( <ChallengeItem item={item} index={index} /> );
 
     const [paymentList, setPaymentList] = useState([
-        {title: "Rent", date: '22 April', amount: '₹ 20,000', icon: Images.car},
-        {title: "Electricity Bill", date: '22 April', amount: '₹ 2,000', icon: Images.light},
-        {title: "Mobile Re.", date: '22 April', amount: '₹ 999', icon: Images.light},
     ])
    
     const [storyList, setStoryList] = useState([
-        {title: "5 Women on things they wish they knew about finances sooner", color: ['rgba(247, 122, 91, 0)', 'rgba(247, 122, 91, 0.632824)', '#F77A5B'], by: 'Oct 26, 2021 - Marsha Barnes', image: null},
-        {title: "5 Women on things they wish they knew about finances sooner", color: ['rgba(66, 205, 236, 0)', 'rgba(113, 229, 255, 0.632824)', '#1c96b1'], by: 'Oct 26, 2021 - Marsha Barnes', image: null},
     ])
     const renderStoryItem = ({ item }) => ( <StoryItem item={item} /> );
     
@@ -140,6 +127,8 @@ const [netWorth, setNetWorth] = useState(0)
 const [spendAmount, setSpendAmount] = useState(0)
 const [lastMonthAmount, setLastMonthAmount] = useState(0)
 const [totalExpense, setTotalExpense] = useState(0)
+const [totalExpenseSpend, setTotalExpenseSpend] = useState(0)
+const [spendMonth, setSpendMonth] = useState(0)
 // ************** Net Worth End ***************
 const calculateNetWorth = ()=>{
     var totalWorth = allAnalyseData?.accounts.map(item => item.amount).reduce((prev, next) => prev + next);
@@ -151,8 +140,8 @@ const calculateNetWorth = ()=>{
     } */
 
     if(allAnalyseData?.expenses?.monthly_expenses.length > 0){
-        setSpendAmount(allAnalyseData?.expenses?.monthly_expenses[0]?.total_expense)
-        setLastMonthAmount(allAnalyseData?.expenses?.monthly_expenses[1]?.total_expense)
+        setSpendAmount(allAnalyseData?.expenses?.monthly_expenses[spendMonth]?.total_expense)
+        setLastMonthAmount(allAnalyseData?.expenses?.monthly_expenses[spendMonth+1]?.total_expense)
     }
         
 }
@@ -254,6 +243,7 @@ const calculateNetWorth = ()=>{
             tempFormat['date'] = moment(item.bill_date).format('DD MMMM')
             tempFormat['icon'] = getPaymentIcon(item.icon_url)
             tempFormat['bill_date'] = moment(item.bill_date).format('DD MMMM')
+            tempFormat['next_bill_date'] = moment(item.next_bill_date).format('DD MMMM')
             tempArr.push(tempFormat)
         });
         setPaymentList(tempArr)
@@ -318,7 +308,7 @@ const calculateNetWorth = ()=>{
         var tempArr2 = []
         var monthData = allAnalyseData?.expenses?.monthly_expenses
         if(monthData !== undefined && monthData.length > 0){
-            monthData.map((item, i)=>{
+            monthData.slice(0, (monthData.length - 1) ).map((item, i)=>{
                 tempArr.push(item.month)
                 tempArr2.push(item.year)
             })
@@ -368,6 +358,10 @@ const calculateNetWorth = ()=>{
             setNewPieCategory(catArr)
         }
         
+        if(allAnalyseData?.expenses?.monthly_expenses.length > 0 ){
+            setSpendAmount(allAnalyseData?.expenses?.monthly_expenses[index]?.total_expense)
+            setLastMonthAmount(allAnalyseData?.expenses?.monthly_expenses[index+1]?.total_expense)
+        }
     }
 
     const checkIsNull = ()=>{
@@ -397,6 +391,7 @@ const calculateNetWorth = ()=>{
         formatJoinChallenges()
         // ***************** Join Challenges ***********
         setTotalExpense(numberWithCommas(allAnalyseData?.total_recurring_expense, 2))
+        setTotalExpenseSpend(numberWithCommas(allAnalyseData?.expenses?.total_expense, 2))
 
         // ************** Total Expense **************
         formatPayment();
@@ -495,7 +490,7 @@ const calculateNetWorth = ()=>{
                     <Text style={Styles.row_2_col_text}> Your spend trend  </Text>
                 </View>
                 <View style={[Styles.row_1_col]}>
-                    <Text style={[Styles.row_2_col_text_2, { color: Colors.orange}]}>{Config.currency} {numberWithCommas(spendAmount)}</Text>
+                    <Text style={[Styles.row_2_col_text_2, { color: Colors.orange}]}>{Config.currency} {numberWithCommas(totalExpenseSpend)}</Text>
                 </View>
             </View>
         {/* ************* Row 4 End ************ */}
@@ -623,7 +618,7 @@ const calculateNetWorth = ()=>{
                 <Text style={[Styles.row_6_col_text_2, ]}>Total Spend</Text>
                 <Text style={[Styles.row_6_col_text]}>{Config.currency}{numberWithCommas(spendAmount)}</Text>
                 <Text style={[Styles.row_6_col_text_2, {color: Math.round(spendAmount - lastMonthAmount) > 0 ? Colors.orange : Colors.success, flexDirection: 'row', alignItems:'center'}]}> <MaterialCommunityIcons name="trending-up" /> 
-                    {Config.currency}{numberWithCommas(spendAmount - lastMonthAmount)} ( {Math.abs(Math.round(((spendAmount - lastMonthAmount)/lastMonthAmount*100)))}%)
+                    {Config.currency}{numberWithCommas(spendAmount - lastMonthAmount)} ( {round(Math.abs(Math.round(((spendAmount - lastMonthAmount)/lastMonthAmount*100))), 2)}%)
                 </Text>
             </View>
             <View style={Styles.row_6_col_2}>
@@ -635,6 +630,7 @@ const calculateNetWorth = ()=>{
                     onSelect={(selectedItem, index) => {
                         setPieDataFunc(index)
                         console.log(selectedItem, index);
+                        setSpendMonth(index);
                     }}
                     defaultButtonText={months[0]}
                     buttonTextAfterSelection={(selectedItem, index) => {

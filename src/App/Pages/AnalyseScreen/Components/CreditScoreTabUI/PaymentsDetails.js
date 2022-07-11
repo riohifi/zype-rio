@@ -59,6 +59,7 @@ const PaymentsDetails = ({ handleUISelect, Styles , catList, setCatLis}) => {
                 tempFormat["amount"] = numberWithCommas(item.remaining_amount)
                 tempFormat["tag"] = item.tenure
                 tempFormat["total_payment"] = item.total_payment
+                tempFormat["full_payment"] = item.full_payment //{/*  mod 7-7-22 */}
                 tempFormat["rate_of_interest"] = item.rate_of_interest
                 tempFormat["loan_type"] = item.loan_type
                 tempFormat["date"] = moment(item.disburse_date).format('MMM YYYY')
@@ -98,7 +99,7 @@ const PaymentsDetails = ({ handleUISelect, Styles , catList, setCatLis}) => {
                         <FontAwesome name="angle-left" size={30} color={Colors.white} />
                         <Text style={Styles.row_1_row_text}>{"   "}Payments</Text>
                         <TouchableOpacity style={{ flexDirection: 'row', position: 'absolute', right: 0 , backgroundColor: Colors.success, paddingHorizontal: 10, borderRadius: wp('5%'), paddingVertical: wp('0.5%')}}>
-                            <Text style={[ {textAlign: 'center', color: Colors.white, fontFamily: Fonts.bold, fontSize: wp('3%')}]}>PERFECT</Text>
+                            <Text style={[ {textAlign: 'center', color: Colors.white, fontFamily: Fonts.bold, fontSize: wp('3%')}]}>{allCreditData?.on_time_payment_status}</Text>
                         </TouchableOpacity>
                     </TouchableOpacity>
                     <Text style={[Styles.row_1_row_btn_text_2, { fontFamily: Fonts.regular, marginLeft: wp('5%'), fontSize: wp('2.6')}]}> Your on time and delayed payments</Text>
@@ -110,7 +111,7 @@ const PaymentsDetails = ({ handleUISelect, Styles , catList, setCatLis}) => {
                             <Text style={[Styles.row_1_row_btn_text_2, { fontFamily: Fonts.regular}]}><Text style={{ fontSize: wp('5%'), fontFamily: Fonts.bold }}>{allCreditData?.full_payments}/{allCreditData?.total_payments}</Text>  payments on time</Text>
                         </View>
                         <TouchableOpacity style={{ flexDirection: 'row' }}>
-                            <Text style={Styles.row_1_row_btn_text_2}>{allCreditData?.score_status}</Text>
+                            {/* <Text style={Styles.row_1_row_btn_text_2}>{allCreditData?.score_status}</Text> */}
                         </TouchableOpacity>
                     </View>
                     {/* *********** Row 3 End ******* */}
@@ -128,9 +129,11 @@ const PaymentsDetails = ({ handleUISelect, Styles , catList, setCatLis}) => {
                                 <Text style={[Styles.row_1_row_text, { fontFamily: Fonts.bold, color: Colors.black}]}>{"   "} {item.bankName} {" "} <Text style={{ fontSize: wp('3%'), fontFamily: Fonts.regular }}>{item.loan_type}</Text></Text>
                             </View>
                             <View>
+                                {/*  mod 7-7-22 start */}
                                 <Text style={[Styles.row_1_row_text, {color: Colors.black, fontSize: wp('3%')}]}>
-                                <Text style={{ fontFamily: Fonts.bold, color: Colors.success, fontSize: wp('4%') }}>{item.total_payment}/{allCreditData?.total_payments}</Text> on time
+                                <Text style={{ fontFamily: Fonts.bold, color: Colors.success, fontSize: wp('4%') }}>{item.full_payment}/{item.total_payment}</Text> on time
                                 </Text>
+                                {/*  mod 7-7-22 end */}
                             </View>
                         </TouchableOpacity>
                         {/* *********** Row 1 end ******* */}

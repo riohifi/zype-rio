@@ -12,7 +12,7 @@ import Images from '../../../../../Utils/Assets/Images';
 import { observer } from 'mobx-react-lite';
 import AnalyseStore from '../../../../../Stores/AnalyseStore';
 import moment from 'moment';
-import { numberWithCommas } from '../../../../../Utils/Utils';
+import { numberWithCommas, round, statusColor } from '../../../../../Utils/Utils';
 import Config from '../../../../../Utils/Config';
 
 const CreditLimit = ({ handleUISelect, Styles , catList, setCatLis}) => {
@@ -58,7 +58,10 @@ const CreditLimit = ({ handleUISelect, Styles , catList, setCatLis}) => {
                 tempFormat["account_number"] = item.account_number
                 tempFormat["amount"] = numberWithCommas(item.remaining_amount)
                 tempFormat["tag"] = item.tenure
+                tempFormat["credit_limit"] = item.credit_limit
                 tempFormat["total_payment"] = item.total_payment
+                tempFormat["credit_limit_available"] = item.credit_limit_available
+                tempFormat["full_payment"] = item.full_payment // mod 7-7-22
                 tempFormat["rate_of_interest"] = item.rate_of_interest
                 tempFormat["disburse_date"] = item.disburse_date
                 tempFormat["loan_type"] = item.loan_type
@@ -98,8 +101,10 @@ const CreditLimit = ({ handleUISelect, Styles , catList, setCatLis}) => {
                     <TouchableOpacity onPress={() => { handleUISelect(0) }} style={[Styles.row_1_row, { justifyContent: 'flex-start', alignItems: 'flex-end' }]}>
                         <FontAwesome name="angle-left" size={30} color={Colors.white} />
                         <Text style={Styles.row_1_row_text}>{"   "}CREDIT LIMIT</Text>
-                        <TouchableOpacity style={{ flexDirection: 'row', position: 'absolute', right: 0 , backgroundColor: 'rgba(255, 201, 7, 1)', paddingHorizontal: 10, borderRadius: wp('5%'), paddingVertical: wp('0.5%')}}>
-                            <Text style={[ {textAlign: 'center', color: Colors.black, fontFamily: Fonts.bold, fontSize: wp('3%')}]}>FAIR</Text>
+                        <TouchableOpacity style={{ flexDirection: 'row', position: 'absolute', right: 0 , backgroundColor: statusColor(allCreditData?.credit_limit_status), paddingHorizontal: 10, borderRadius: wp('5%'), paddingVertical: wp('0.5%')}}>
+                            <Text style={[ {textAlign: 'center', color: Colors.white, fontFamily: Fonts.bold, fontSize: wp('3%')}]}>{allCreditData?.credit_limit_status}</Text>
+                            {/* <Text style={[ {textAlign: 'center', color: Colors.black, fontFamily: Fonts.bold, fontSize: wp('3%')}]}>{allCreditData?.score_status}</Text> */}
+                        {/* {console.log('{allCreditData?.credit_limit_status}', statusColor(allCreditData?.credit_limit_status))} */}
                         </TouchableOpacity>
                     </TouchableOpacity>
                     <Text style={[Styles.row_1_row_btn_text_2, { fontFamily: Fonts.regular, marginLeft: wp('5%'), fontSize: wp('2.6')}]}> Remaining limit of your credit cards</Text>
@@ -111,7 +116,7 @@ const CreditLimit = ({ handleUISelect, Styles , catList, setCatLis}) => {
                             <Text style={[Styles.row_1_row_btn_text_2, { fontFamily: Fonts.regular}]}><Text style={{ fontSize: wp('5%'), fontFamily: Fonts.bold }}>{allCreditData?.total_credit_limit_available}</Text> of your limit is available</Text>
                         </View>
                         <TouchableOpacity style={{ flexDirection: 'row' }}>
-                            <Text style={Styles.row_1_row_btn_text_2}>{allCreditData?.score_status}</Text>
+                            {/* <Text style={Styles.row_1_row_btn_text_2}>{allCreditData?.credit_limit_status}</Text> */}
                         </TouchableOpacity>
                     </View>
                     {/* *********** Row 3 End ******* */}
@@ -120,7 +125,7 @@ const CreditLimit = ({ handleUISelect, Styles , catList, setCatLis}) => {
 
 
                 {
-                    bankList.map((item, i)=>(
+                    bankList.filter((fl)=> fl.credit_limit !== undefined ).map((item, i)=>(
                         <TouchableOpacity onPress={() => { handleNextGo(item) }}  key={i} style={[Styles.row_1, { borderWidth: 0, backgroundColor: Colors.white, marginVertical: wp('2%') }]}>
                         {/* *********** Row 1 Start ******* */}
                         <TouchableOpacity onPress={() => { handleNextGo(item) }} style={[Styles.row_1_row]}>
@@ -129,9 +134,11 @@ const CreditLimit = ({ handleUISelect, Styles , catList, setCatLis}) => {
                                 <Text style={[Styles.row_1_row_text, { fontFamily: Fonts.bold, color: Colors.black}]}>{"   "} {item.bankName} {" "} <Text style={{ fontSize: wp('3%'), fontFamily: Fonts.regular }}>{item.loan_type}</Text></Text>
                             </View>
                             <View>
+                                {/*  mod 7-7-22 start */}
                                 <Text style={[Styles.row_1_row_text, {color: Colors.black, fontSize: wp('3%')}]}>
-                                <Text style={{ fontFamily: Fonts.bold, color: Colors.success, fontSize: wp('4%') }}>{item.total_payment}/{item.total_payment}</Text> on time
+                                <Text style={{ fontFamily: Fonts.bold, color: Colors.black30, fontSize: wp('4%') }}>{Config.currency} {numberWithCommas(item.credit_limit)}</Text>
                                 </Text>
+                            {/*  mod 7-7-22 start */}
                             </View>
                         </TouchableOpacity>
                         {/* *********** Row 1 end ******* */}
@@ -149,7 +156,7 @@ const CreditLimit = ({ handleUISelect, Styles , catList, setCatLis}) => {
                                 <Text style={[Styles.row_1_row_btn_text_2, {color: Colors.black, fontFamily: Fonts.regular}]}>Last Updated : {moment(item.disburse_date).format('DD MMM YYYY')}</Text>
                             </View>
                             <TouchableOpacity  onPress={() => { handleNextGo(item) }} style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Text style={[Styles.row_1_row_btn_text_2, {color: Colors.black, fontFamily: Fonts.regular}]}>Available <Text style={{fontFamily: Fonts.bold, fontSize: item.rate_of_interest ? wp('5%') : wp('3%'), color: '#E55050',}}>{item.rate_of_interest ? `${item.rate_of_interest}%` : ' --'}</Text></Text>
+                                <Text style={[Styles.row_1_row_btn_text_2, {color: Colors.black, fontFamily: Fonts.regular}]}>Available <Text style={{fontFamily: Fonts.bold, fontSize: item.credit_limit_available ? wp('5%') : wp('3%'), color: '#E55050',}}> {item.credit_limit_available ? `${item.credit_limit_available}` : ' --'}</Text></Text>
                                 <FontAwesome name="angle-right" color={ Colors.black} size={15} />
                             </TouchableOpacity>
                         </View>

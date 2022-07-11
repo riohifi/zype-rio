@@ -25,7 +25,7 @@ export const postJoin = (data) => {
 };
 
 export const getScoreAll = (filter) => {
-    return get(`${Config.extendedUrl}credit_data/1051`, filter).then((response) => {
+    return get(`${Config.extendedUrl}credit_data/1032`, filter).then((response) => {
         // console.log('********* response ***', response.data)
         return response.data
     });

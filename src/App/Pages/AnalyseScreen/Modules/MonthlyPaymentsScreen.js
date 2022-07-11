@@ -32,6 +32,7 @@ const MonthlyPaymentsScreen = () => {
             tempFormat['icon'] = getPaymentIcon(item.icon_url)
             tempFormat['icon_image'] = item.icon_image
             tempFormat['bill_date'] = moment(item.bill_date).format('DD MMMM')
+            tempFormat['next_bill_date'] = moment(item.next_bill_date).format('DD MMMM')
             tempArr.push(tempFormat)
         });
         // console.log('tempArr', tempArr)
@@ -66,7 +67,7 @@ const MonthlyPaymentsScreen = () => {
 
                             <View style={Styles.section}>
                                 <Text style={Styles.h6}>Total Spend</Text>
-                                <Text style={Styles.h1}>{Config.currency} {numberWithCommas(spendAmount)}</Text>
+                                <Text style={Styles.h1}>{Config.currency} {numberWithCommas(allAnalyseData?.total_recurring_expense)}</Text>
 
                                 <TouchableOpacity onPress={()=> NavigationService.navigate("NewSubscriptionScreen")} style={Styles.create_btn}>
                                     <AntDesign name="pluscircleo" color={Colors.white} size={25} style={{ marginRight: 10 }} />

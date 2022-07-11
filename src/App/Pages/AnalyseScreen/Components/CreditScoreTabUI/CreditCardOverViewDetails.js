@@ -49,8 +49,12 @@ const CreditCardOverViewDetails = ({ handleUISelect, Styles , catList, setCatLis
         var temArr = []
         var temCat = AnalyseStore.loanCategory
         if(allCreditData && allCreditData !== undefined && temCat !== null){
-            var filterData = allCreditData.accounts.filter((fl)=> fl.loan_type == temCat[catIndex])
+            // var filterData = allCreditData.accounts.filter((fl)=> fl.loan_type == temCat[catIndex])
             // console.log('filterData', filterData)
+            var filterData = [];
+            if(temCat[catIndex] === "All"){ filterData = allCreditData.accounts }
+            else{ filterData = allCreditData.accounts.filter((fl)=> fl.loan_type == temCat[catIndex]) }
+            
             filterData.map((item, i)=>{
                 var tempFormat = {}
                 tempFormat["bankName"] = item.subscriber_name
@@ -105,12 +109,13 @@ const CreditCardOverViewDetails = ({ handleUISelect, Styles , catList, setCatLis
                     <View style={[Styles.row_1_row, { marginTop: wp('7%') }]}>
                         <View>
                             {/* <ParsedText parse={[{ pattern: /2|4/, style: { fontSize: wp('5%') } }]} style={Styles.row_1_row_btn_text_2}>4 active 2 closed accounts</ParsedText> */}
-                            <Text style={Styles.row_1_row_btn_text_2}><Text style={{ fontSize: wp('5%') }}>{allCreditData?.active_account_count}</Text> active <Text style={{ fontSize: wp('5%') }}>{allCreditData?.closed_account_count}</Text> closed accounts</Text>
+                            <Text style={[Styles.row_1_row_btn_text_2, {fontFamily: Fonts.regular, fontSize: wp('2.5%')}]}><Text style={{ fontSize: wp('5%') }}>{allCreditData?.active_account_count}</Text> active <Text style={{ fontSize: wp('5%') }}>{allCreditData?.writeOff_account_count !== null ? allCreditData?.writeOff_account_count : '0' }</Text> writeOff <Text style={{ fontSize: wp('5%') }}>{allCreditData?.overdue_account_count !== null ? allCreditData?.overdue_account_count : '0' }</Text> overdue  <Text style={{ fontSize: wp('5%') }}>{allCreditData?.closed_account_count}</Text> closed accounts </Text>
                         </View>
-                        <TouchableOpacity style={{ flexDirection: 'row' }}>
-                            <Text style={Styles.row_1_row_btn_text_2}>{allCreditData?.score_status}</Text>
-                        </TouchableOpacity>
+                        
                     </View>
+                    <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
+                            <Text style={Styles.row_1_row_btn_text_2}>{allCreditData?.credit_limit_status}</Text>
+                        </TouchableOpacity>
                     {/* *********** Row 3 End ******* */}
 
                 </View>

@@ -809,9 +809,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.eightbitlab:blurview:1.6.3@aar"
-      jars="/Users/rio/.gradle/caches/transforms-3/f53688ccfecdd2b48dd0c10b40a04947/transformed/jetified-blurview-1.6.3/jars/classes.jar"
+      jars="/Users/rio/.gradle/caches/transforms-3/436f91762bc0df92e52b49250a7c378a/transformed/jetified-blurview-1.6.3/jars/classes.jar"
       resolved="com.eightbitlab:blurview:1.6.3"
-      folder="/Users/rio/.gradle/caches/transforms-3/f53688ccfecdd2b48dd0c10b40a04947/transformed/jetified-blurview-1.6.3"
+      folder="/Users/rio/.gradle/caches/transforms-3/436f91762bc0df92e52b49250a7c378a/transformed/jetified-blurview-1.6.3"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

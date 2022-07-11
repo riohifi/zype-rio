@@ -85,3 +85,15 @@ export const paymentHistoryIconColor =(data, month)=>{
         return Colors.gray40
     }
 }
+
+export const statusColor = (data)=>{
+    if(data === "Excellent"){
+        return Colors.green20
+    }
+    else if(data === "Perfect"){
+        return Colors.green20
+    }
+    else{
+       return Colors.orange
+    }
+}

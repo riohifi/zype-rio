@@ -4,9 +4,10 @@ import { Defs, LinearGradient, Stop, Circle, G, Line, Rect, Text , Polygon} from
 import * as scale from 'd3-scale'
 import { Dimensions } from 'react-native';
 import Fonts from '../../../../Utils/Assets/Fonts';
-import { widthPercentageToDP } from 'react-native-responsive-screen';
+import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 import { round } from '../../../../Utils/Utils';
 import Config from '../../../../Utils/Config';
+import _ from 'lodash'
 
 
 const BarChartComponent = (props)=> {
@@ -36,8 +37,9 @@ const  { data, dataRaw , activeCat, catList} = props
         {
         data[data.length - 1].value > 0 &&
         <G
-            x={ y(bandwidth) - (bandwidth * 1.5) }
-            y={ y(data[data.length - 1].value)/ (bandwidth)}
+            x={ y(bandwidth) - (bandwidth * 0.1) }
+            // y={ y(data[data.length - 1].value)/ (bandwidth)}
+            y={ y(data[data.length - 1].value)/ 1.8}
             key={ 'tooltip' }
             onPress={ () => console.log('tooltip clicked') }
         >
@@ -96,26 +98,41 @@ const  { data, dataRaw , activeCat, catList} = props
          }
         )
     )
-    const LabelsTwo = ({  x, y, bandwidth, data }) => (
-        data.map((value, index) => {
+    const LabelsTwo = ({  x, y, bandwidth, data }) => {
+       
+    const amountArr = [];
+    data.map((item)=>{
+        amountArr.push(item.value)
+    })
+        const maxVal = _.max(amountArr)
+        const minVal = _.min(amountArr)
+
+       const rang =  _.range(0, maxVal, (maxVal/6) );
+        const shortRange = [];
+       for (var i = rang.length-1; i >= 0; i--) { 
+            shortRange.push(rang[i])
+        }
+        // console.log('shortRange', shortRange)
+       return shortRange.map((value, index) => {
             // console.log(value)
                 return(
                 <Text
                     key={ index }
-                    y={ x(index) }
-                    x={(widthPercentageToDP('83%'))}
+                    y={ widthPercentageToDP(index*10.5)}
+                    x={(widthPercentageToDP('85%'))}
                     fontSize={ 11 }
                     fill={ 'white' }
                     alignmentBaseline={ 'hanging' }
                     textAnchor='start'
                     fontWeight="bold"
                 >
-                    {Config.currency}{round((value.value/1000), 1)}k
+                    {index === 0 && Config.currency}{round((value/1000), 1)}k
                 </Text>
             )
          }
         )
-    )
+        
+    }
 
  
     
@@ -123,7 +140,7 @@ const  { data, dataRaw , activeCat, catList} = props
             <>
           
             <BarChart
-                style={{ height: 300, width: Dimensions.get('window').width, }}
+                style={{ height: heightPercentageToDP('40%'), width: Dimensions.get('window').width, }}
                 data={dataRaw}
                 animate={true}
                 gridMin={0}
@@ -132,7 +149,7 @@ const  { data, dataRaw , activeCat, catList} = props
                 svg={{ fill: 'url(#gradient)',  }}
                 yAccessor={({ item }) => item.value}
                 xAccessor={({item}) => item.value}
-                contentInset={{ top: 60, bottom: 60 , right: 80}}
+                contentInset={{ top: 0, bottom: 50 , right: 80}}
             >
                 <Gradient/>
                 <GradientTwo/>

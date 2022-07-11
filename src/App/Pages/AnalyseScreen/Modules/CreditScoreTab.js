@@ -29,6 +29,7 @@ const CreditScoreTab = (props) => {
     
     const getCatList = ()=>{
         var temArr = []
+        temArr.push("All");
         if(allCreditData && allCreditData !== undefined){
             allCreditData?.accounts.map((item, i)=>{
                 temArr.push(item.loan_type)

@@ -10,7 +10,7 @@ import { observer } from 'mobx-react-lite';
 import AnalyseStore from '../../../../../Stores/AnalyseStore';
 import Config from '../../../../../Utils/Config';
 import moment from 'moment';
-import { paymentHistoryIcon, paymentHistoryIconColor } from '../../../../../Utils/Utils';
+import { paymentHistoryIcon, paymentHistoryIconColor, round } from '../../../../../Utils/Utils';
 
 const CreditCardDetails = ({ handleUISelect, Styles }) => {
 
@@ -23,6 +23,8 @@ const CreditCardDetails = ({ handleUISelect, Styles }) => {
         // console.log(JSON.stringify(AnalyseStore.loanDetails))
         setData(AnalyseStore.loanDetails)
     },[AnalyseStore.loanDetails, AnalyseStore.allCreditData])
+
+    console.log('allCreditData', data);
 
     return (
         <>
@@ -37,7 +39,7 @@ const CreditCardDetails = ({ handleUISelect, Styles }) => {
                             <Text style={[Styles.row_1_row_text, { color: Colors.black, fontFamily: Fonts.bold}]}>{data?.subscriber_name} <Text style={{color: Colors.gray60, fontSize: wp('3.5')}}> {data?.loan_type}</Text></Text>
                         </View>
                         <View>
-                            <Text style={{color: Colors.green20, fontFamily: Fonts.medium, fontSize: wp('3.5%')}}>ACTIVE</Text>
+                            <Text style={{color: Colors.green20, fontFamily: Fonts.medium, fontSize: wp('3.5%')}}>{data?.account_status}</Text>
                         </View>
                     </TouchableOpacity>
                     <Text style={[Styles.row_1_row_text, { color: Colors.black, fontFamily: Fonts.regular, marginLeft: wp('16%'), fontSize: wp('3.2%')}]}>{data?.account_number}</Text>
@@ -62,7 +64,7 @@ const CreditCardDetails = ({ handleUISelect, Styles }) => {
                         </View>
                         <TouchableOpacity style={{  }}>
                             <Text style={[Styles.row_1_row_btn_text_3, {color: Colors.black}]}>loan tenure</Text>
-                            <Text style={[Styles.row_1_row_btn_text_2, {color: Colors.black, fontSize: wp('4.5%'), marginVertical: wp('2%'), fontFamily: Fonts.medium}]}>{allCreditData?.bureau_age}</Text>
+                            <Text style={[Styles.row_1_row_btn_text_2, {color: Colors.black, fontSize: wp('4.5%'), marginVertical: wp('2%'), fontFamily: Fonts.medium, textAlign: 'center'}]}>{data?.tenure !== null ? data?.tenure : '--'}</Text>
                         </TouchableOpacity>
                     </View>
                     {/* *********** Row 3 End ******* */}
@@ -72,7 +74,7 @@ const CreditCardDetails = ({ handleUISelect, Styles }) => {
                             <Text style={[Styles.row_1_row_btn_text_2, {color: Colors.black, fontSize: wp('4%'),}]}>payment history</Text>
                         </View>
                         <TouchableOpacity style={{  }}>
-                            <Text style={[Styles.row_1_row_btn_text_2, {color: Colors.green20, fontSize: wp('4%'),}]}>{data?.full_payment/data?.total_payment*100}% ON TIME</Text>
+                            <Text style={[Styles.row_1_row_btn_text_2, {color: Colors.green20, fontSize: wp('4%'),}]}>{round(data?.full_payment/data?.total_payment*100, 2)}% ON TIME</Text>
                         </TouchableOpacity>
                     </View>
                     {/* *********** Row 3 End ******* */}

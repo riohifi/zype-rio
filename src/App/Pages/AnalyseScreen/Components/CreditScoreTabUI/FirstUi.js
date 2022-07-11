@@ -13,7 +13,7 @@ import CreditBankItem from '../CreditBankItem';
 import { observer } from 'mobx-react-lite';
 import AnalyseStore from '../../../../../Stores/AnalyseStore';
 import _ from 'lodash'
-import { daysAgo, numberWithCommas, random_rgba } from '../../../../../Utils/Utils';
+import { daysAgo, numberWithCommas, random_rgba, statusColor } from '../../../../../Utils/Utils';
 import moment from 'moment';
 import AnotherChart from '../AnotherChart';
 import Config from '../../../../../Utils/Config';
@@ -70,8 +70,12 @@ const FirstUi = ({ Styles, handleUISelect, catList, setCatList })=>{
     const getBankList = (catIndex)=>{
         var temArr = []
         var temCat = AnalyseStore.loanCategory
+        // console.log('temCat[catIndex]', temCat[catIndex])
         if(allCreditData && allCreditData !== undefined && temCat !== null){
-            var filterData = allCreditData.accounts.filter((fl)=> fl.loan_type == temCat[catIndex])
+            var filterData = [];
+            if(temCat[catIndex] === "All"){ filterData = allCreditData.accounts }
+            else{ filterData = allCreditData.accounts.filter((fl)=> fl.loan_type == temCat[catIndex]) }
+            
             // console.log('filterData', filterData)
             filterData.map((item, i)=>{
                 var tempFormat = {}
@@ -131,7 +135,7 @@ const FirstUi = ({ Styles, handleUISelect, catList, setCatList })=>{
                 {/* *********** Row 1 Start ******* */}
                 <View style={Styles.row_1_row}>
                     <Text style={Styles.row_1_row_text}>Your Credit Score</Text>
-                    <TouchableOpacity style={Styles.row_1_row_btn}>
+                    <TouchableOpacity style={[Styles.row_1_row_btn, {backgroundColor: statusColor(allCreditData?.score_status)}]}>
                         <Image source={Images.won} style={{ width: 10, height: 10 }} resizeMode='cover' />
                         <Text style={Styles.row_1_row_btn_text}>{allCreditData?.score_status}</Text>
                     </TouchableOpacity>
@@ -155,7 +159,7 @@ const FirstUi = ({ Styles, handleUISelect, catList, setCatList })=>{
                         <Ionicons name="reload" size={wp('5%')} color={Colors.white} />
                     </TouchableOpacity>
                     :
-                    <Text style={Styles.row_1_row_btn_text_2}>update in {daysAgo(allCreditData?.last_updated_at)} days ago</Text>
+                    <Text style={Styles.row_1_row_btn_text_2}>updated {daysAgo(allCreditData?.last_updated_at)} days ago</Text>
                     }
                 </View>
                 {/* *********** Row 3 End ******* */}
@@ -221,7 +225,7 @@ const FirstUi = ({ Styles, handleUISelect, catList, setCatList })=>{
 
                 <View style={[Styles.row_1_row, { justifyContent: 'space-between', width: wp('80%') }]}>
                     <Text style={Styles.row_1_row_text}>Payments on Time</Text>
-                    <TouchableOpacity style={[Styles.row_1_row_btn, { width: wp('28%') }]}>
+                    <TouchableOpacity style={[Styles.row_1_row_btn, { width: wp('28%'), backgroundColor: statusColor(allCreditData?.on_time_payment_status) }]}>
                         <Image source={Images.won} style={{ width: 10, height: 10 }} resizeMode='cover' />
                         <Text style={Styles.row_1_row_btn_text}>{allCreditData?.on_time_payment_status}</Text>
                     </TouchableOpacity>
@@ -249,7 +253,7 @@ const FirstUi = ({ Styles, handleUISelect, catList, setCatList })=>{
 
                 <View style={[Styles.row_1_row, { justifyContent: 'space-between', width: wp('80%') }]}>
                     <Text style={Styles.row_1_row_text}>Available Credit limit</Text>
-                    <TouchableOpacity style={[Styles.row_1_row_btn, { paddingHorizontal: wp('5%'), backgroundColor: Colors.orange }]}>
+                    <TouchableOpacity style={[Styles.row_1_row_btn, { paddingHorizontal: wp('5%'), backgroundColor: statusColor(allCreditData?.on_time_payment_status) }]}>
                         <Image source={Images.won} style={{ width: 10, height: 10 }} resizeMode='cover' />
                         <Text style={Styles.row_1_row_btn_text}>{allCreditData?.on_time_payment_status}</Text>
                     </TouchableOpacity>
@@ -277,7 +281,7 @@ const FirstUi = ({ Styles, handleUISelect, catList, setCatList })=>{
 
                 <View style={[Styles.row_1_row, { justifyContent: 'space-between', width: wp('80%') }]}>
                     <Text style={Styles.row_1_row_text}>Since First Account</Text>
-                    <TouchableOpacity style={[Styles.row_1_row_btn, { paddingHorizontal: wp('3%') }]}>
+                    <TouchableOpacity style={[Styles.row_1_row_btn, { paddingHorizontal: wp('3%'), backgroundColor: statusColor(allCreditData?.bureau_age_status) }]}>
                         <Image source={Images.won} style={{ width: 10, height: 10 }} resizeMode='cover' />
                         <Text style={Styles.row_1_row_btn_text}>{allCreditData?.bureau_age_status}</Text>
                     </TouchableOpacity>
