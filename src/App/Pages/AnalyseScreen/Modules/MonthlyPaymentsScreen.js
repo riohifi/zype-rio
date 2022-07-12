@@ -67,7 +67,8 @@ const MonthlyPaymentsScreen = () => {
 
                             <View style={Styles.section}>
                                 <Text style={Styles.h6}>Total Spend</Text>
-                                <Text style={Styles.h1}>{Config.currency} {numberWithCommas(allAnalyseData?.total_recurring_expense)}</Text>
+                                <Text style={Styles.h1}>{Config.currency} {numberWithCommas(payData?.total_recurring_amount)}</Text>
+                                {/* <Text style={Styles.h1}>{Config.currency} {numberWithCommas(allAnalyseData?.total_recurring_expense)}</Text> */}
 
                                 <TouchableOpacity onPress={()=> NavigationService.navigate("NewSubscriptionScreen")} style={Styles.create_btn}>
                                     <AntDesign name="pluscircleo" color={Colors.white} size={25} style={{ marginRight: 10 }} />

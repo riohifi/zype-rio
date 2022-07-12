@@ -58,7 +58,9 @@ const PaymentsDetailsScreen = (props) => {
 
                             <View style={Styles.section}>
                                 <Text style={Styles.h1} numberOfLines={1} ellipsizeMode='tail' >{Config.currency} {data.data?.amount} </Text>
+                                {/* // mod 12-7 start */}
                                 <Text style={Styles.h4}><MaterialCommunityIcons name="lightning-bolt-outline" color={Colors.cyan20} size={20} />{data.data?.title}</Text>
+                                {/* // mod 12-7 end */}
                                 <Text style={Styles.h6}> Next <Text style={{color: Colors.cyan}}>{data.data?.next_bill_date}</Text></Text>
                             </View>
 

@@ -105,7 +105,7 @@ const analyseModel = types.model('analyseModel', {
 
     getRecurringPaymentsFunc: flow(function*(){
         try {
-            const resp = yield getRecurringPayments(1032)
+            const resp = yield getRecurringPayments()
             // console.log(resp.data)
             if(resp.status === 'success'){
                 applySnapshot(self, {

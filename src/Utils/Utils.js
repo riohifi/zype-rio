@@ -67,8 +67,10 @@ export const paymentHistoryIcon =(data, month)=>{
     const tempMonth = data.filter((fl)=>fl.month.toLowerCase() == month.toLowerCase())
     // console.log('data[0]', tempMonth[0])
     if(tempMonth[0] !== undefined && tempMonth[0].month.toLowerCase() === month){
+        // mod 12-7 start
         if(tempMonth[0].status === -1){return 'circle-thin'}
         else if(tempMonth[0].status === 1){return 'close'}
+        // mod 12-7 end
         else{return 'check'}
     }else{
         return 'circle'
@@ -78,13 +80,17 @@ export const paymentHistoryIconColor =(data, month)=>{
     const tempMonth = data.filter((fl)=>fl.month.toLowerCase() == month.toLowerCase())
     // console.log('data[0]', tempMonth[0])
     if(tempMonth[0] !== undefined && tempMonth[0].month.toLowerCase() === month){
+        // mod 12-7 start
         if(tempMonth[0].status === -1){return Colors.yellow}
         else if(tempMonth[0].status === 1){return Colors.red}
+        // mod 12-7 end
         else{return Colors.success}
     }else{
         return Colors.gray40
     }
 }
+
+// mod 12-7 start
 
 export const statusColor = (data)=>{
     if(data === "Excellent"){
@@ -97,3 +103,4 @@ export const statusColor = (data)=>{
        return Colors.orange
     }
 }
+// mod 12-7 end

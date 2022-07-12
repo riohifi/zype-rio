@@ -38,8 +38,8 @@ export const getScoreUpdate = (cid) => {
     });
 };
 
-export const getRecurringPayments = (cid) => {
-    return get(`${Config.extendedUrl}recurring-payments/${cid}`).then((response) => {
+export const getRecurringPayments = () => {
+    return get(`${Config.extendedUrl}recurring-payments/1020`).then((response) => {
         // console.log('********* response ***', response.data)
         return response.data
     });
