@@ -26,19 +26,19 @@ const MonthlyPaymentsScreen = (props) => {
       // ************** Total Expense **************
       const formatPayment = ()=>{
         const tempArr = []
-        data!== undefined &&  data?.map((item)=>{
+        allAnalyseData?.recurring_payments?.map((item)=>{
             const tempFormat = {}
             tempFormat['amount'] = numberWithCommas(item.amount, 2)
-            tempFormat['title'] = item.title
+            tempFormat['title'] = item.name
             tempFormat['id'] = item?.id
-            tempFormat['date'] = item.bill_date
-            // tempFormat['date'] = moment(item.bill_date).format('DD MMMM')
+            // tempFormat['date'] = item.bill_date
+            tempFormat['date'] = moment(item.bill_date).format('DD MMMM')
             tempFormat['icon'] = getPaymentIcon(item.icon_url)
             tempFormat['icon_image'] = item.icon_image
-            tempFormat['bill_date'] = item.bill_date
-            // tempFormat['bill_date'] = moment(item.bill_date).format('DD MMMM')
-            tempFormat['next_bill_date'] = item.next_bill_date
-            // tempFormat['next_bill_date'] = moment(item.next_bill_date).format('DD MMMM')
+            // tempFormat['bill_date'] = item.bill_date
+            tempFormat['bill_date'] = moment(item.bill_date).format('DD MMMM')
+            // tempFormat['next_bill_date'] = item.next_bill_date
+            tempFormat['next_bill_date'] = moment(item.next_bill_date).format('DD MMMM')
             tempArr.push(tempFormat)
         });
         // console.log('tempArr', tempArr)
