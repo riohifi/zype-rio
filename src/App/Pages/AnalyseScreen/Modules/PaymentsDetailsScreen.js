@@ -19,7 +19,7 @@ const PaymentsDetailsScreen = (props) => {
     const toast = useToast()
 
     const data = props.route.params
-    console.log(data.data)
+    // console.log('--->', data.data)
     const [paymentList, setPaymentList] = useState([
         // {date: "31st March 2022", amount: "₹ 2,400"},
     ])

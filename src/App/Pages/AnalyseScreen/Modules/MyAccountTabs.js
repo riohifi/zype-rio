@@ -682,7 +682,7 @@ const calculateNetWorth = ()=>{
 
 
       {/* ************* Row 14 Header 4 Start ************ */}
-      <TouchableOpacity onPress={()=> NavigationService.navigate("MonthlyPaymentsScreen")} style={[Styles.row_2, { marginVertical: wp('4%')}]}>
+      <TouchableOpacity onPress={()=> NavigationService.navigate("MonthlyPaymentsScreen", {data: paymentList})} style={[Styles.row_2, { marginVertical: wp('4%')}]}>
                 <View style={[Styles.row_1_col, {flex: 3}]}>
                     <Text style={Styles.row_2_col_text}>Your Monthly Payments </Text>
                 </View>
@@ -711,7 +711,7 @@ const calculateNetWorth = ()=>{
                 <View style={{height: hp('33%'), overflow: 'scroll' }}>
                     <ScrollView nestedScrollEnabled showsVerticalScrollIndicator={false}>
                         {
-                            paymentList.map((item, i)=> (<PaymentItem index={i} key={`pay-${i}`} navigate="PaymentsDetailsScreen" item={item} />))
+                            paymentList.slice(0, 3).map((item, i)=> (<PaymentItem index={i} key={`pay-${i}`} navigate="PaymentsDetailsScreen" item={item} />))
                         }
                     </ScrollView>
                 </View>

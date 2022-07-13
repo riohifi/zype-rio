@@ -14,7 +14,10 @@ import { numberWithCommas, getPaymentIcon } from '../../../../Utils/Utils';
 import moment from 'moment';
 import Config from '../../../../Utils/Config';
 
-const MonthlyPaymentsScreen = () => {
+const MonthlyPaymentsScreen = (props) => {
+
+    const {data} = props.route.params
+    console.log('--->', data)
 
     var allAnalyseData = AnalyseStore.allAnalyseData
     var payData = AnalyseStore.recurringPayments
@@ -23,16 +26,19 @@ const MonthlyPaymentsScreen = () => {
       // ************** Total Expense **************
       const formatPayment = ()=>{
         const tempArr = []
-        payData?.records.map((item)=>{
+        data!== undefined &&  data?.map((item)=>{
             const tempFormat = {}
             tempFormat['amount'] = numberWithCommas(item.amount, 2)
-            tempFormat['title'] = item.name
+            tempFormat['title'] = item.title
             tempFormat['id'] = item?.id
-            tempFormat['date'] = moment(item.bill_date).format('DD MMMM')
+            tempFormat['date'] = item.bill_date
+            // tempFormat['date'] = moment(item.bill_date).format('DD MMMM')
             tempFormat['icon'] = getPaymentIcon(item.icon_url)
             tempFormat['icon_image'] = item.icon_image
-            tempFormat['bill_date'] = moment(item.bill_date).format('DD MMMM')
-            tempFormat['next_bill_date'] = moment(item.next_bill_date).format('DD MMMM')
+            tempFormat['bill_date'] = item.bill_date
+            // tempFormat['bill_date'] = moment(item.bill_date).format('DD MMMM')
+            tempFormat['next_bill_date'] = item.next_bill_date
+            // tempFormat['next_bill_date'] = moment(item.next_bill_date).format('DD MMMM')
             tempArr.push(tempFormat)
         });
         // console.log('tempArr', tempArr)
@@ -67,7 +73,7 @@ const MonthlyPaymentsScreen = () => {
 
                             <View style={Styles.section}>
                                 <Text style={Styles.h6}>Total Spend</Text>
-                                <Text style={Styles.h1}>{Config.currency} {numberWithCommas(payData?.total_recurring_amount)}</Text>
+                                <Text style={Styles.h1}>{Config.currency} {numberWithCommas(allAnalyseData?.total_recurring_expense)}</Text>
                                 {/* <Text style={Styles.h1}>{Config.currency} {numberWithCommas(allAnalyseData?.total_recurring_expense)}</Text> */}
 
                                 <TouchableOpacity onPress={()=> NavigationService.navigate("NewSubscriptionScreen")} style={Styles.create_btn}>
